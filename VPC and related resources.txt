@@ -7,28 +7,28 @@ The image is a Virtual Private Cloud (VPC) in the us-east (Northern Virginia) re
  Subnets:
 1. Public Subnets (highlighted in green):
    - CIDR ranges:
-     - 10.0.1.0/24 (in us-east-1a)
-     - 10.0.3.0/24 (in us-east-1b)
-     - 10.0.5.0/24 (in us-east-1c)
+     - 10.100.1.0/24 (in us-east-1a)
+     - 10.100.3.0/24 (in us-east-1b)
+     - 10.100.5.0/24 (in us-east-1c)
    - Public subnets are exposed to the internet via the Internet Gateway (IGW), allowing resources in these subnets to communicate with the outside world.
    - Associated with IGW: These subnets have routes that allow traffic to and from the internet.
 
 2. Private Subnets (highlighted in blue):
    - CIDR ranges:
-     - 10.0.2.0/24 (in us-east-1a)
-     - 10.0.4.0/24 (in us-east-1b)
-     - 10.0.6.0/24 (in us-east-1c)
+     - 10.101.2.0/24 (in us-east-1a)
+     - 10.101.4.0/24 (in us-east-1b)
+     - 10.101.6.0/24 (in us-east-1c)
    - Private subnets do not have direct access to the internet, meaning the resources within these subnets (like databases) are isolated from public traffic.
    - Internal traffic only: A private route table routes traffic only within the VPC.
 
  Routing Tables:
 1. Public Subnets Route Table:
    - Destination: 0.0.0.0/0 (to IGW) for internet traffic.
-   - Local traffic (10.0.0.0/16) stays within the VPC.
+   - Local traffic (10.100.0.0/16) stays within the VPC.
    - This table allows instances in public subnets to access the internet.
 
 2. Private Subnets Route Table:
-   - Destination: 10.0.0.0/16
+   - Destination: 10.101.0.0/16
    - Route: Local traffic only, meaning instances in private subnets can communicate with other instances within the VPC but cannot directly access the internet.
 
  Internet Gateway (MyIGW):
